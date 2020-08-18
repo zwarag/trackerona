@@ -12,6 +12,18 @@
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/foo/tsconfig.lib.json"
+    },
+    {
+      "path": "./packages/foo/tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/bar/tsconfig.lib.json"
+    },
+    {
+      "path": "./packages/bar/tsconfig.spec.json"
     }
 ]
 }

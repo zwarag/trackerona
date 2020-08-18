@@ -1,0 +1,14 @@
+{
+  "name": "bar",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "ng build bar"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.0.9",
+    "@angular/core": "^10.0.9"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}
