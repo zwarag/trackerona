@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from '../../rest.service';
 import {Observable} from 'rxjs';
-import {FederalState} from '../../federalStates';
+import {FederalState} from '../federalState';
 import {map} from 'rxjs/operators';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-list',
@@ -14,12 +14,12 @@ export class ListComponent implements OnInit {
   federalStates$: Observable<FederalState[]>;
 
   constructor(
-    private rest: RestService
+    private data: DataService
   ) {
   }
 
   ngOnInit(): void {
-    this.federalStates$ = this.rest.getFederalStates()
+    this.federalStates$ = this.data.getFederalStates()
       .pipe(
         map(e => e.slice(-9))
       );
