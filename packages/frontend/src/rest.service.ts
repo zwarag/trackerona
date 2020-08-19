@@ -19,9 +19,7 @@ export class RestService {
     const url = `https://services1.arcgis.com/YfxQKFk1MjjurGb5/ArcGIS/rest/services/AUSTRIA_COVID19_Cases/FeatureServer/3/query?where=datum >= CURRENT_TIMESTAMP -30&outFields=*&sqlFormat=none&f=pjson`;
     return this.http.get<any>(url)
       .pipe(
-        tap(e => console.log(e)),
         map(e => e.features.map(x => x.attributes)),
-        tap(e => console.log(e))
       );
   }
 }

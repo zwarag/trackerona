@@ -1,0 +1,10 @@
+<p>Liste von Bundesländer</p>
+<div *ngFor="let f of federalStates$ | async">
+  <div>{{f.bundesland}}</div>
+  <ul>
+    <li>Infiziete: {{f.positiv}}</li>
+    <li>Infizierte <small>(pro 100k Einwohner)</small>: {{f.positiv_pro_ew | number:'1.0-0'}}</li>
+    <li>Genesen: {{f.genesene}}</li>
+    <li>Verstoreben: {{f.verstorbene}}</li>
+  </ul>
+</div>
