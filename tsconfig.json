@@ -12,6 +12,12 @@
     },
     {
       "path": "./packages/frontend/tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/frontend2/tsconfig.app.json"
+    },
+    {
+      "path": "./packages/frontend2/tsconfig.spec.json"
     }
 ]
 }

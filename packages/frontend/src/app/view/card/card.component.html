@@ -1,0 +1,3 @@
+<div *ngFor="let f of federalStates$ | async">
+  <app-lib-card [title]="f.bundesland" [desc]="'infizierte'" [value]="f.positiv"></app-lib-card>
+</div>
