@@ -28,7 +28,8 @@
               "packages/frontend/src/assets"
             ],
             "styles": [
-              "packages/frontend/src/styles.scss"
+              "packages/frontend/src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
