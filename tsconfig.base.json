@@ -23,6 +23,10 @@
       "bar": [
         "dist/bar/bar",
         "dist/bar"
+      ],
+      "elements": [
+        "dist/elements/elements",
+        "dist/elements"
       ]
     }
   }

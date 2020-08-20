@@ -9,6 +9,14 @@
     "start": "npx lerna run start"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1000.6",
+    "@angular-devkit/build-ng-packagr": "~0.1000.6",
+    "@angular/compiler-cli": "~10.0.9",
     "lerna": "^3.22.1"
+  ,    "ng-packagr": "^10.0.0",
+    "typescript": "~3.9.5"
+},
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }

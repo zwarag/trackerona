@@ -18,6 +18,12 @@
     },
     {
       "path": "./packages/frontend2/tsconfig.spec.json"
+    },
+    {
+      "path": "./packages/elements/tsconfig.lib.json"
+    },
+    {
+      "path": "./packages/elements/tsconfig.spec.json"
     }
 ]
 }

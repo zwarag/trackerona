@@ -125,123 +125,42 @@
         }
       }
     },
-    "frontend2": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "packages/frontend2",
-      "sourceRoot": "packages/frontend2/src",
-      "prefix": "app",
+    "elements": {
+      "projectType": "library",
+      "root": "packages/elements",
+      "sourceRoot": "packages/elements/src",
+      "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "outputPath": "dist/frontend2",
-            "index": "packages/frontend2/src/index.html",
-            "main": "packages/frontend2/src/main.ts",
-            "polyfills": "packages/frontend2/src/polyfills.ts",
-            "tsConfig": "packages/frontend2/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "packages/frontend2/src/favicon.ico",
-              "packages/frontend2/src/assets"
-            ],
-            "styles": [
-              "packages/frontend2/src/styles.scss"
-            ],
-            "scripts": []
+            "tsConfig": "packages/elements/tsconfig.lib.json",
+            "project": "packages/elements/ng-package.json"
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "packages/frontend2/src/environments/environment.ts",
-                  "with": "packages/frontend2/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
+              "tsConfig": "packages/elements/tsconfig.lib.prod.json"
             }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "frontend2:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "frontend2:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "frontend2:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/frontend2/src/test.ts",
-            "polyfills": "packages/frontend2/src/polyfills.ts",
-            "tsConfig": "packages/frontend2/tsconfig.spec.json",
-            "karmaConfig": "packages/frontend2/karma.conf.js",
-            "assets": [
-              "packages/frontend2/src/favicon.ico",
-              "packages/frontend2/src/assets"
-            ],
-            "styles": [
-              "packages/frontend2/src/styles.scss"
-            ],
-            "scripts": []
+            "main": "packages/elements/src/test.ts",
+            "tsConfig": "packages/elements/tsconfig.spec.json",
+            "karmaConfig": "packages/elements/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "packages/frontend2/tsconfig.app.json",
-              "packages/frontend2/tsconfig.spec.json",
-              "packages/frontend2/e2e/tsconfig.json"
+              "packages/elements/tsconfig.lib.json",
+              "packages/elements/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "packages/frontend2/e2e/protractor.conf.js",
-            "devServerTarget": "frontend2:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "frontend2:serve:production"
-            }
           }
         }
       }
