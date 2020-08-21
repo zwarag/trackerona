@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {FederalState} from '../../federalState';
 import {DataService} from '../../data.service';
-import {map} from 'rxjs/operators';
+import {CountryData} from '../../countryData';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +10,14 @@ import {map} from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-  federalStates$: Observable<FederalState[]>;
+  austriaData$: Observable<CountryData>;
 
   constructor(
     private data: DataService
   ) { }
 
   ngOnInit(): void {
-    this.federalStates$ = this.data.getFederalStates()
-      .pipe(
-        map(e => e.slice(-9))
-      );
+    this.austriaData$ = this.data.getCountryData();
   }
 
 }

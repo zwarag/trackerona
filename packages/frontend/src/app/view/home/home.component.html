@@ -1,10 +1,32 @@
-<p>Liste von Bundesländer</p>
-<div *ngFor="let f of federalStates$ | async">
-  <div>{{f.bundesland}}</div>
-  <ul>
-    <li>Infiziete: {{f.positiv}}</li>
-    <li>Infizierte <small>(pro 100k Einwohner)</small>: {{f.positiv_pro_ew | number:'1.0-0'}}</li>
-    <li>Genesen: {{f.genesene}}</li>
-    <li>Verstoreben: {{f.verstorbene}}</li>
-  </ul>
-</div>
+<article>
+  <div class="row">
+    <header>
+      <h1>Aktuelle Daten zu Covid in Österreich</h1>
+    </header>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <lib-simplecard
+        [title]="'Infizierte'"
+        [value]="(austriaData$ | async)?.positiv"></lib-simplecard>
+    </div>
+    <div class="col-3">
+      <lib-simplecard
+        [title]="'Infizierte'"
+        [value]="(austriaData$ | async)?.positiv_pro_ew"
+        [desc]="'pro 100k Einwohner'"></lib-simplecard>
+    </div>
+    <div class="col-3">
+      <lib-simplecard
+        [title]="'Genesene'"
+        [value]="(austriaData$ | async)?.genesene"
+      ></lib-simplecard>
+    </div>
+    <div class="col-3">
+      <lib-simplecard
+        [title]="'Verstorbene'"
+        [value]="(austriaData$ | async)?.verstorbene"
+      ></lib-simplecard>
+    </div>
+  </div>
+</article>

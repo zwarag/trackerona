@@ -3,7 +3,7 @@ import {RestService} from './rest.service';
 import {Observable} from 'rxjs';
 import {FederalState} from './federalState';
 import {FederalDistrict} from './federalDistrict';
-import {map, tap} from 'rxjs/operators';
+import {map, shareReplay, tap} from 'rxjs/operators';
 import {CountryData} from './countryData';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class DataService {
   constructor(
     private rest: RestService
   ) {
-    this.federalStates$ = this.rest.getFederalStates();
+    this.federalStates$ = this.rest.getFederalStates().pipe(shareReplay());
     this.federalDistricts$ = this.rest.getFederalDistricts();
   }
 
@@ -58,12 +58,14 @@ export class DataService {
       positiv_pro_ew: 0,
       verstorbene: 0,
     };
-    this.getFederalStates().pipe(
-      tap(x => austria.genesene = x.map(y => y.verstorbene).reduce((acc, sum) => acc += sum)),
-      tap(x => austria.positiv = x.map(y => y.positiv).reduce((acc, sum) => acc += sum)),
-      tap(x => austria.positiv_pro_ew = x.map(y => y.positiv_pro_ew).reduce((acc, sum) => acc += sum)),
-      tap(x => austria.verstorbene = x.map(y => y.verstorbene).reduce((acc, sum) => acc += sum)),
+    this.federalStates$.pipe(
+      tap(x => console.log(x)),
+      tap(x => austria.genesene = x.map(y => y.verstorbene).reduce((acc, val) => acc += val)),
+      tap(x => austria.positiv = x.map(y => y.positiv).reduce((acc, val) => acc += val)),
+      tap(x => austria.positiv_pro_ew = x.map(y => y.positiv_pro_ew).reduce((acc, val) => acc += val)),
+      tap(x => austria.verstorbene = x.map(y => y.verstorbene).reduce((acc, val) => acc += val)),
     );
+    console.log('done', austria);
     return new Observable<CountryData>(subscriber => subscriber.next(austria));
   }
 
