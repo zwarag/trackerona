@@ -9,7 +9,7 @@ export class SimplecardComponent implements OnInit {
 
   @Input() title: string;
   @Input() desc: string;
-  @Input() value: number;
+  @Input() value: string;
 
   constructor() { }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {FederalDistrict} from '../../federalDistrict';
+import {DataService} from '../../data.service';
 
 @Component({
   selector: 'app-bezirk',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BezirkComponent implements OnInit {
 
-  constructor() { }
+  federalDistricts$: Observable<FederalDistrict[]>;
+
+  constructor(
+    private data: DataService
+  ) { }
 
   ngOnInit(): void {
+    this.federalDistricts$ = this.data.getFederalDistricts();
   }
 
 }
