@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import {FederalState} from '../../federalState';
 import {DataService} from '../../data.service';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-bundesland',
@@ -18,7 +17,7 @@ export class BundeslandComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.federalStates$ = this.data.getFederalStates().pipe(map(x => x.slice(-9)));
+    this.federalStates$ = this.data.getFederalStates();
   }
 
 }

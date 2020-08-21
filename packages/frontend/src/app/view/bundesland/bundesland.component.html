@@ -1,3 +1,5 @@
-<div *ngFor="let f of federalStates$ | async">
-  <app-simplecard [title]="f.bundesland" [desc]="'infizierte'" [value]="f.positiv"></app-simplecard>
+<div class="row">
+<div *ngFor="let f of federalStates$ | async" class="col-sm py-3">
+  <lib-simplecard [title]="f.bundesland" [desc]="'infizierte'" [value]="f.positiv"></lib-simplecard>
+</div>
 </div>
