@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import {GenericTable} from '../../../../../frontend/src/app/genericTable';
 
 @Component({
   selector: 'lib-simpletable',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./simpletable.component.scss']
 })
 export class SimpletableComponent implements OnInit {
+
+  @Input() tableData: Observable<GenericTable>;
 
   constructor() { }
 

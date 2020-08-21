@@ -8,7 +8,7 @@
     <div class="col-3">
       <lib-simplecard
         [title]="'Infizierte'"
-        [value]="(austriaData$ | async)?.positiv"></lib-simplecard>
+        [value]="(austriaData$ | async)?.positiv.toString()"></lib-simplecard>
     </div>
     <div class="col-3">
       <lib-simplecard
@@ -19,14 +19,21 @@
     <div class="col-3">
       <lib-simplecard
         [title]="'Genesene'"
-        [value]="(austriaData$ | async)?.genesene"
+        [value]="(austriaData$ | async)?.genesene.toString()"
       ></lib-simplecard>
     </div>
     <div class="col-3">
       <lib-simplecard
         [title]="'Verstorbene'"
-        [value]="(austriaData$ | async)?.verstorbene"
+        [value]="(austriaData$ | async)?.verstorbene.toString()"
       ></lib-simplecard>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    <lib-simpletable
+      [tableData]="bundeslandTable$"
+      ></lib-simpletable>
     </div>
   </div>
 </article>

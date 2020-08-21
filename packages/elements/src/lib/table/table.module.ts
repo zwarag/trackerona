@@ -8,6 +8,7 @@ import { SimpletableComponent } from './simpletable/simpletable.component';
   declarations: [SimpletableComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [SimpletableComponent]
 })
 export class TableModule { }
