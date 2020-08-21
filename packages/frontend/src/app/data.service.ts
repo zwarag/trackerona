@@ -16,12 +16,14 @@ export class DataService {
 
   federalStates$: Observable<FederalState[]>;
   federalDistricts$: Observable<FederalDistrict[]>;
+  readonly countryData$: Observable<CountryData>;
 
   constructor(
     private rest: RestService
   ) {
     this.federalStates$ = this.rest.getFederalStates().pipe(shareReplay());
     this.federalDistricts$ = this.rest.getFederalDistricts();
+    this.countryData$ = this.computeCountryData();
   }
 
   /*
@@ -50,23 +52,19 @@ export class DataService {
     return this.federalDistricts$;
   }
 
-  getCountryData(): Observable<CountryData> {
-    const austria: CountryData = {
-      country: 'Österreich',
-      genesene: 0,
-      positiv: 0,
-      positiv_pro_ew: 0,
-      verstorbene: 0,
-    };
-    this.federalStates$.pipe(
-      tap(x => console.log(x)),
-      tap(x => austria.genesene = x.map(y => y.verstorbene).reduce((acc, val) => acc += val)),
-      tap(x => austria.positiv = x.map(y => y.positiv).reduce((acc, val) => acc += val)),
-      tap(x => austria.positiv_pro_ew = x.map(y => y.positiv_pro_ew).reduce((acc, val) => acc += val)),
-      tap(x => austria.verstorbene = x.map(y => y.verstorbene).reduce((acc, val) => acc += val)),
+  private computeCountryData(): Observable<CountryData> {
+    return this.getFederalStates().pipe(
+      map(x => {
+        const austria: CountryData = {
+          country: 'Österreich',
+          genesene: x.map(e => e.genesene).reduce((acc, val) => acc += val),
+          positiv: x.map(e => e.positiv).reduce((acc, val) => acc += val),
+          positiv_pro_ew: x.map(e => e.positiv_pro_ew).reduce((acc, val) => acc += val),
+          verstorbene: x.map(e => e.verstorbene).reduce((acc, val) => acc += val)
+        };
+        return austria;
+      })
     );
-    console.log('done', austria);
-    return new Observable<CountryData>(subscriber => subscriber.next(austria));
   }
 
 }

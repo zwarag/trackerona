@@ -13,7 +13,7 @@
     <div class="col-3">
       <lib-simplecard
         [title]="'Infizierte'"
-        [value]="(austriaData$ | async)?.positiv_pro_ew"
+        [value]="(austriaData$ | async )?.positiv_pro_ew | number:'1.0-0'"
         [desc]="'pro 100k Einwohner'"></lib-simplecard>
     </div>
     <div class="col-3">

@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.austriaData$ = this.data.getCountryData();
+    this.austriaData$ = this.data.countryData$;
   }
 
 }
