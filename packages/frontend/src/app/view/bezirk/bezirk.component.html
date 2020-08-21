@@ -5,7 +5,7 @@
     </header>
   </div>
   <div class="row">
-    <div *ngFor="let f of federalDistricts$ | async" class="col-sm py-3">
+    <div *ngFor="let f of federalDistricts$ | async" class="col-sm">
       <lib-simplecard [title]="f.PB"
                       [desc]="'infizierte'"
                       [value]="(f.zuwachs >= 0) ? '+'+f.zuwachs : f.zuwachs.toString()"></lib-simplecard>
