@@ -17,7 +17,7 @@ export class BezirkComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.federalDistricts$ = this.data.getFederalDistricts();
+    this.federalDistricts$ = this.data.initFederalDistricts();
   }
 
 }

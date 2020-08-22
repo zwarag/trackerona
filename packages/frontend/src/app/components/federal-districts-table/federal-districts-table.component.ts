@@ -18,7 +18,7 @@ export class FederalDistrictsTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.federalDistrictsTable$ = this.data.getFederalDistricts().pipe(
+    this.federalDistrictsTable$ = this.data.federalDistricts$.pipe(
       map(e => {
           const table: GenericTable = {
             title: 'Bezirke im Überblick',

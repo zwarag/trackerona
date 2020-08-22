@@ -18,7 +18,7 @@ export class FederalStatesTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.bundeslandTable$ = this.data.getFederalStates().pipe(
+    this.bundeslandTable$ = this.data.federalStates$.pipe(
       map(e => {
           const table: GenericTable = {
             title: 'Bundesländer im Überblick',

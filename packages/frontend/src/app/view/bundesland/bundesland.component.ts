@@ -17,7 +17,7 @@ export class BundeslandComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.federalStates$ = this.data.getFederalStates();
+    this.federalStates$ = this.data.initFederalStates();
   }
 
 }

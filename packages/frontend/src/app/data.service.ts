@@ -3,7 +3,7 @@ import {RestService} from './rest.service';
 import {Observable} from 'rxjs';
 import {FederalState} from './federalState';
 import {FederalDistrict} from './federalDistrict';
-import {map, shareReplay, tap} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {CountryData} from './countryData';
 
 @Injectable({
@@ -14,46 +14,33 @@ export class DataService {
   readonly NFederalStates: number = 9;
   readonly NFederalDistricts: number = 94;
 
-  federalStates$: Observable<FederalState[]>;
-  federalDistricts$: Observable<FederalDistrict[]>;
+  readonly federalStates$: Observable<FederalState[]>;
+  readonly federalStatesTimeLine$: Observable<FederalState[]>;
+  readonly federalDistricts$: Observable<FederalDistrict[]>;
+  readonly federalDistrictsTimeLine$: Observable<FederalDistrict[]>;
   readonly countryData$: Observable<CountryData>;
 
   constructor(
     private rest: RestService
   ) {
-    this.federalStates$ = this.rest.getFederalStates().pipe(shareReplay());
-    this.federalDistricts$ = this.rest.getFederalDistricts();
+    this.federalStatesTimeLine$ = this.initFederalStatesTimeLine();
+    this.federalDistrictsTimeLine$ = this.initFederalDistrictsTimeLine();
+    this.federalStates$ = this.initFederalStates();
+    this.federalDistricts$ = this.initFederalDistricts();
     this.countryData$ = this.computeCountryData();
   }
 
-  /*
-   * Returns the only the newest Information
-   */
-  getFederalStates(): Observable<FederalState[]> {
-    return this.federalStates$.pipe(
-      map(x => x.slice(-this.NFederalStates))
-    );
+
+  private initFederalStatesTimeLine(): Observable<FederalState[]> {
+    return this.rest.getFederalStates();
   }
 
-  getFederalStatesTimeLine(): Observable<FederalState[]> {
-    return this.federalStates$;
-  }
-
-  /*
-   * Returns the only the newest Information
-   */
-  getFederalDistricts(): Observable<FederalDistrict[]> {
-    return this.federalDistricts$.pipe(
-      map(x => x.slice(-this.NFederalDistricts))
-    );
-  }
-
-  getFederalDistrictsTimeLine(): Observable<FederalDistrict[]> {
-    return this.federalDistricts$;
+  private initFederalDistrictsTimeLine(): Observable<FederalDistrict[]> {
+    return this.rest.getFederalDistricts();
   }
 
   private computeCountryData(): Observable<CountryData> {
-    return this.getFederalStates().pipe(
+    return this.initFederalStates().pipe(
       map(x => {
         const austria: CountryData = {
           country: 'Österreich',
@@ -66,5 +53,24 @@ export class DataService {
       })
     );
   }
+
+  /*
+   * Returns the only the newest Information
+   */
+  private initFederalStates(): Observable<FederalState[]> {
+    return this.federalStatesTimeLine$.pipe(
+      map(x => x.slice(-this.NFederalStates))
+    );
+  }
+
+  /*
+   * Returns the only the newest Information
+   */
+  private initFederalDistricts(): Observable<FederalDistrict[]> {
+    return this.federalDistrictsTimeLine$.pipe(
+      map(x => x.slice(-this.NFederalDistricts))
+    );
+  }
+
 
 }
