@@ -128,14 +128,14 @@
     "elements": {
       "projectType": "library",
       "root": "packages/elements",
-      "sourceRoot": "packages/elements/src",
+      "sourceRoot": "packages/elements",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
             "tsConfig": "packages/elements/tsconfig.lib.json",
-            "project": "packages/elements/ng-package.json"
+            "project": "packages/elements/ng-package.json",
           },
           "configurations": {
             "production": {
@@ -146,7 +146,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "packages/elements/src/test.ts",
+            "main": "packages/elements/test.ts",
             "tsConfig": "packages/elements/tsconfig.spec.json",
             "karmaConfig": "packages/elements/karma.conf.js"
           }
