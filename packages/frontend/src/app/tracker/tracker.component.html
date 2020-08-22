@@ -1,0 +1,43 @@
+<article>
+  <div class="row">
+    <header>
+      <h1>Aktuelle Daten zu Covid in Österreich</h1>
+    </header>
+  </div>
+  <div class="row">
+<!--    <div class="col-3">-->
+<!--      <app-data-table-->
+<!--        [title]="'Infizierte'"-->
+<!--        [dataSource$]="(austriaData$ | async)?.positiv.toString()"></app-data-table>-->
+<!--    </div>-->
+<!--    <div class="col-3">-->
+<!--      <lib-simplecard-->
+<!--        [title]="'Infizierte'"-->
+<!--        [value]="(austriaData$ | async )?.positiv_pro_ew | number:'1.0-0'"-->
+<!--        [desc]="'pro 100k Einwohner'"></lib-simplecard>-->
+<!--    </div>-->
+<!--    <div class="col-3">-->
+<!--      <lib-simplecard-->
+<!--        [title]="'Genesene'"-->
+<!--        [value]="(austriaData$ | async)?.genesene.toString()"-->
+<!--      ></lib-simplecard>-->
+<!--    </div>-->
+<!--    <div class="col-3">-->
+<!--    </div>-->
+<!--    <lib-simplecard-->
+<!--      [title]="'Verstorbene'"-->
+<!--      [value]="(austriaData$ | async)?.verstorbene.toString()"-->
+<!--    ></lib-simplecard>-->
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-data-table [dataSource$]="stateDataSource$"></app-data-table>
+<!--      <lib-simple-table [tableData$]="stateDataSource$"></lib-simple-table>-->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-data-table [dataSource$]="districtDataSource$"></app-data-table>
+    </div>
+  </div>
+</article>

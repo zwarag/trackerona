@@ -1,0 +1,27 @@
+<!--TODO make it dynamic-->
+<ng-container *ngIf="tableData$ | async as data; else nono">
+  <h4>{{data?.title}}</h4>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th *ngFor="let heading of data?.tableHeads">
+        <span>{{heading}}</span>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of data?.tableRows">
+      <td *ngFor="let cell of row">
+        <span>{{cell}}</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #nono>
+  <h1>Nutting found, noob!!!</h1>
+</ng-template>
+
+

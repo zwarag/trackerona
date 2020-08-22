@@ -1,26 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ViewModule} from './view/view.module';
-import {ComponentsModule} from './components/components.module';
+import { CoreModule } from './core/core.module';
+import { NgModule } from '@angular/core';
+import { TrackerModule } from './tracker/tracker.module';
 
 @NgModule({
   declarations: [
     AppComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ViewModule,
-        ComponentsModule,
-    ],
+  imports: [
+    AppRoutingModule,
+    CoreModule,
+    TrackerModule
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor() {}
+  constructor() {
+  }
 }
