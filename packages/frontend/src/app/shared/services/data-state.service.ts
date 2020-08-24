@@ -47,13 +47,13 @@ export class DataStateService {
 
   private computeCountryData(): Observable<CountryData> {
     return this.federalStates$.pipe(
-      map(x => {
+      map((x) => {
         const austria: CountryData = {
           country: 'Österreich',
-          genesene: x.map(e => e.genesene).reduce((acc, val) => acc += val),
-          positiv: x.map(e => e.positiv).reduce((acc, val) => acc += val),
-          positiv_pro_ew: x.map(e => e.positiv_pro_ew).reduce((acc, val) => acc += val),
-          verstorbene: x.map(e => e.verstorbene).reduce((acc, val) => acc += val),
+          genesene: x.map(e => e.recovered).reduce((acc, val) => acc += val),
+          positiv: x.map(e => e.positive).reduce((acc, val) => acc += val),
+          positiv_pro_ew: x.map(e => e.positivePerResident).reduce((acc, val) => acc += val),
+          verstorbene: x.map(e => e.deaths).reduce((acc, val) => acc += val),
         };
         return austria;
       }),

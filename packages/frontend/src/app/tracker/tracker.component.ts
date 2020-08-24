@@ -48,7 +48,7 @@ export class TrackerComponent implements OnInit {
           return {
             title: 'Bundesländer im Überblick',
             tableHeads: ['Bundesland', 'Infizierte', 'Infizierte pro 100k Einwohner', 'Genesene', 'Verstorbene'],
-            tableRows: e.map(v => [v.bundesland, v.infizierte, v.infizierte_pro_ew.toFixed(), v.genesene, v.verstorbene]),
+            tableRows: e.map(v => [v.federalState, v.infected, v.infectedPerResident.toFixed(), v.recovered, v.deaths]),
           } as unknown as GenericTable<Global, StateRow[]>;
         },
       ),
@@ -60,9 +60,9 @@ export class TrackerComponent implements OnInit {
             title: 'Bezirke im Überblick',
             tableHeads: ['Bezirk', 'Zuwachs', 'Zuwachs in %'],
             tableRows: e.map(v => [
-              v.PB,
-              ( v.zuwachs >= 0 ) ? '+' + v.zuwachs : v.zuwachs,
-              ( v.zuwachs >= 0 ) ? '+' + v.zuwachs_prozent.toFixed(2) : v.zuwachs_prozent.toFixed(2),
+              v.name,
+              ( v.increase >= 0 ) ? '+' + v.increase : v.increase,
+              ( v.increase >= 0 ) ? '+' + v.increasePercent.toFixed(2) : v.increasePercent.toFixed(2),
             ]),
           } as unknown as GenericTable<Bezirk, DistrictRow[]>;
         },
