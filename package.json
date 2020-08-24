@@ -10,9 +10,8 @@
   ],
   "scripts": {
     "ng": "ng",
-    "start": "yarn --cwd packages/frontend run start",
+    "start": "ng serve",
     "build": "ng build",
-    "serve": "ng serve",
     "build:lib": "ng build --prod --project=elements"
   },
   "devDependencies": {

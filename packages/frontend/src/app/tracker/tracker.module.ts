@@ -11,7 +11,6 @@ import { TrackerComponent } from './tracker.component';
   ],
   providers: [],
 })
-// @ts-ignore
 
 export class TrackerModule {
   constructor() {

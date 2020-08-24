@@ -1,14 +1,9 @@
-/*
- * Copyright (c) 2000 - 2020 by Raiffeisen Software GmbH.
- * All rights reserved.
- */
-
 import { Component, OnInit } from '@angular/core';
 
 import { DataStateService } from '../shared/services/data-state.service';
 import { Observable } from 'rxjs';
 import { Bezirk, GenericTable, Global } from '@lib/elements/table';
-import { map, share, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 export type Row = {
   bundesland: string,
@@ -29,7 +24,6 @@ type DistrictRow = Pick<Row, 'PB' | 'zuwachs' | 'zuwachs_prozent'>
   templateUrl: './tracker.component.html',
   styles: [],
 })
-// @ts-ignore
 export class TrackerComponent implements OnInit {
 
   stateDataSource$: Observable<GenericTable<Global, StateRow[]>>;
@@ -41,8 +35,6 @@ export class TrackerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: refactor to combineLatest, switchMap oder mergeMap, was auch immer der richtige operator ist
-    // TODO: Difference between cold and hot observable lernen
     this.stateDataSource$ = this.data.federalStates$.pipe(
       map((e) => {
           return {
@@ -52,7 +44,6 @@ export class TrackerComponent implements OnInit {
           } as unknown as GenericTable<Global, StateRow[]>;
         },
       ),
-      // shareReplay()
     );
     this.districtDataSource$ = this.data.federalDistricts$.pipe(
       map(e => {
@@ -67,11 +58,6 @@ export class TrackerComponent implements OnInit {
           } as unknown as GenericTable<Bezirk, DistrictRow[]>;
         },
       ));
-
-    // this.districtDataSource$.subscribe({
-    //   next: r => console.log('tracker', r)
-    // })
-    // end todo
   }
 
 }
