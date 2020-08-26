@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PageNotFoundComponent } from "./components/page-not-found/page-not-found.component";
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -16,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   ],
   exports: [
     NavbarComponent,
+    PageNotFoundComponent
   ],
 })
 export class CoreModule {
