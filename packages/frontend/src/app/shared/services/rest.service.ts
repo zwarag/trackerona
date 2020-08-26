@@ -11,9 +11,9 @@ import { map } from 'rxjs/operators';
 
 import { FederalState } from '../../models/federal-state';
 import { FederalDistrict } from '../../models/federal-district';
-import {RestFederalState} from '../../models/rest-federal-state';
-import {RestGenericResponse} from '../../models/rest-generic-response';
-import {RestFederalDistrict} from '../../models/rest-federal-district';
+import { RestFederalState } from '../../models/rest-federal-state';
+import { RestGenericResponse } from '../../models/rest-generic-response';
+import { RestFederalDistrict } from '../../models/rest-federal-district';
 
 @Injectable({
   providedIn: 'root',

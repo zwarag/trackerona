@@ -52,8 +52,8 @@ export class TrackerComponent implements OnInit {
             tableHeads: ['Bezirk', 'Zuwachs', 'Zuwachs in %'],
             tableRows: e.map(v => [
               v.name,
-              ( v.increase >= 0 ) ? '+' + v.increase : v.increase,
-              ( v.increase >= 0 ) ? '+' + v.increasePercent.toFixed(2) : v.increasePercent.toFixed(2),
+              (v.increase >= 0) ? '+' + v.increase : v.increase,
+              (v.increase >= 0) ? '+' + v.increasePercent.toFixed(2) : v.increasePercent.toFixed(2),
             ]),
           } as unknown as GenericTable<Bezirk, DistrictRow[]>;
         },

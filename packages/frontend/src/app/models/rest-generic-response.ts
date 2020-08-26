@@ -1,5 +1,5 @@
-import {RestFederalState} from './rest-federal-state';
-import {RestFederalDistrict} from './rest-federal-district';
+import { RestFederalState } from './rest-federal-state';
+import { RestFederalDistrict } from './rest-federal-district';
 
 type featureObject = {
   attributes: RestFederalState | RestFederalDistrict

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { SimpleTableComponent } from './simple-table.component';
 
 
-
 @NgModule({
   declarations: [SimpleTableComponent],
   imports: [
@@ -11,4 +10,5 @@ import { SimpleTableComponent } from './simple-table.component';
   ],
   exports: [SimpleTableComponent]
 })
-export class TableModule { }
+export class TableModule {
+}

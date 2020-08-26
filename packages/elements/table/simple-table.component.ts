@@ -9,13 +9,13 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class SimpleTableComponent implements OnInit{
+export class SimpleTableComponent implements OnInit {
 
   @Input() tableData$: Observable<GenericTable<unknown, unknown>>;
 
-ngOnInit(): void {
-  // this.tableData$?.subscribe({
-  //   next:r => console.log('lib', r)
-  // })
-}
+  ngOnInit(): void {
+    // this.tableData$?.subscribe({
+    //   next:r => console.log('lib', r)
+    // })
+  }
 }

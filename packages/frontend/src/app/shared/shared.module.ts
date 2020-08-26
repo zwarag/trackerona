@@ -9,7 +9,7 @@ import { TableModule } from '@lib/elements/table';
   imports: [
     TableModule
   ],
-  exports:[DataTableComponent, TableModule]
+  exports: [DataTableComponent, TableModule]
 })
 // @ts-ignore
 

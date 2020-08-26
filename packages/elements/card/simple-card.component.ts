@@ -16,7 +16,8 @@ export class SimpleCardComponent implements OnInit {
   @Input() desc: string;
   @Input() value: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

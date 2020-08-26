@@ -1,5 +1,5 @@
-import {FederalData} from './federal-data';
-import {RestFederalState} from './rest-federal-state';
+import { FederalData } from './federal-data';
+import { RestFederalState } from './rest-federal-state';
 
 export class FederalState extends FederalData {
 
@@ -13,20 +13,20 @@ export class FederalState extends FederalData {
 
 
   private constructor(objectId: number,
-              infected: number,
-              infectedPerResident: number,
-              globalID: string,
-              datum: number,
-              increase: number,
-              increasePercent: number,
-              population: number,
-              federalState: string,
-              deaths: number,
-              federalStateId: number,
-              recovered: number,
-              positive: number,
-              positivePerResident: number,
-              averageSevenDay: number) {
+                      infected: number,
+                      infectedPerResident: number,
+                      globalID: string,
+                      datum: number,
+                      increase: number,
+                      increasePercent: number,
+                      population: number,
+                      federalState: string,
+                      deaths: number,
+                      federalStateId: number,
+                      recovered: number,
+                      positive: number,
+                      positivePerResident: number,
+                      averageSevenDay: number) {
     super(objectId, infected, infectedPerResident, globalID, datum, increase, increasePercent, population);
     this.federalState = federalState;
     this.deaths = deaths;

@@ -1,5 +1,5 @@
-import {FederalData} from './federal-data';
-import {RestFederalDistrict} from './rest-federal-district';
+import { FederalData } from './federal-data';
+import { RestFederalDistrict } from './rest-federal-district';
 
 export class FederalDistrict extends FederalData {
 

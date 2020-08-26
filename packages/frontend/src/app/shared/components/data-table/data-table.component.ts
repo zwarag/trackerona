@@ -11,7 +11,7 @@ import { GenericTable } from '@lib/elements/table';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 // @ts-ignore
-export class DataTableComponent  {
+export class DataTableComponent {
   @Input() dataSource$: Observable<GenericTable<unknown, unknown>>;
   // ngOnInit(): void {
   // this.dataSource$.subscribe({
