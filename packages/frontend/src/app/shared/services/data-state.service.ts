@@ -8,7 +8,7 @@ import { RestService } from './rest.service';
 import { Observable } from 'rxjs';
 import { FederalState } from '../../models/federal-state';
 import { FederalDistrict } from '../../models/federal-district';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { CountryData } from '../../models/country-data';
 
 @Injectable({
@@ -45,21 +45,6 @@ export class DataStateService {
     return this.rest.getFederalDistricts();
   }
 
-  private computeCountryData(): Observable<CountryData> {
-    return this.federalStates$.pipe(
-      map((x) => {
-        const austria: CountryData = {
-          country: 'Österreich',
-          genesene: x.map(e => e.recovered).reduce((acc, val) => acc += val),
-          positiv: x.map(e => e.positive).reduce((acc, val) => acc += val),
-          positiv_pro_ew: x.map(e => e.positivePerResident).reduce((acc, val) => acc += val),
-          verstorbene: x.map(e => e.deaths).reduce((acc, val) => acc += val),
-        };
-        return austria;
-      }),
-    );
-  }
-
   /*
    * Returns the only the newest Information
    */
@@ -78,5 +63,19 @@ export class DataStateService {
     );
   }
 
+  private computeCountryData(): Observable<CountryData> {
+    return this.federalStates$.pipe(
+      map((x) => {
+        const austria: CountryData = {
+          country: 'Österreich',
+          recovered: x.map(e => e.recovered).reduce((acc, val) => acc += val),
+          positive: x.map(e => e.positive).reduce((acc, val) => acc += val),
+          positivePerResident: x.map(e => e.positivePerResident).reduce((acc, val) => acc += val),
+          deaths: x.map(e => e.deaths).reduce((acc, val) => acc += val),
+        };
+        return austria;
+      }),
+    );
+  }
 
 }
