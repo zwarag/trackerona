@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
-import { DataTableComponent } from './components/data-table/data-table.component';
+import { DataTableComponent } from './components/data-table.component';
 import { TableModule } from '@lib/elements/table';
+import { CardModule } from "@lib/elements/card";
 
 @NgModule({
   declarations: [
-    DataTableComponent
+    DataTableComponent,
   ],
   imports: [
-    TableModule
+    TableModule,
+    CardModule
   ],
-  exports: [DataTableComponent, TableModule]
+  exports: [DataTableComponent, TableModule, CardModule]
 })
-// @ts-ignore
 
+// @ts-ignore
 export class SharedModule {
   constructor() {
   }

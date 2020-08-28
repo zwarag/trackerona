@@ -4,6 +4,7 @@ import { DataStateService } from '../shared/services/data-state.service';
 import { Observable } from 'rxjs';
 import { Bezirk, GenericTable, Global } from '@lib/elements/table';
 import { map } from 'rxjs/operators';
+import { CountryData } from "../models/country-data";
 
 export type Row = {
   bundesland: string,
@@ -28,6 +29,7 @@ export class TrackerComponent implements OnInit {
 
   stateDataSource$: Observable<GenericTable<Global, StateRow[]>>;
   districtDataSource$: Observable<GenericTable<Bezirk, DistrictRow[]>>;
+  austriaDataSource$: Observable<CountryData>
 
   constructor(
     private data: DataStateService,
@@ -57,7 +59,9 @@ export class TrackerComponent implements OnInit {
             ]),
           } as unknown as GenericTable<Bezirk, DistrictRow[]>;
         },
-      ));
+      )
+    );
+    this.austriaDataSource$ = this.data.countryData$;
   }
 
 }
