@@ -4,41 +4,7 @@
       <h1>Aktuelle Daten zu Covid in Österreich</h1>
     </header>
   </div>
-  <div class="row">
-    <div class="col-3">
-      <lib-simple-card
-        [title]="'Infizierte'"
-        [value]="(austriaDataSource$ | async )?.positive | number:'1.0-0'"
-        libColorize
-        orange
-      ></lib-simple-card>
-    </div>
-    <div class="col-3">
-      <lib-simple-card
-        [title]="'Infizierte'"
-        [value]="(austriaDataSource$ | async )?.positivePerResident | number:'1.0-0'"
-        [desc]="'pro 100k Einwohner'"
-        libColorize
-        yellow
-      ></lib-simple-card>
-    </div>
-    <div class="col-3">
-      <lib-simple-card
-        [title]="'Genesene'"
-        [value]="(austriaDataSource$ | async)?.recovered.toString()"
-        libColorize
-        green
-      ></lib-simple-card>
-    </div>
-    <div class="col-3">
-      <lib-simple-card
-        [title]="'Verstorbene'"
-        [value]="(austriaDataSource$ | async)?.deaths.toString()"
-        libColorize
-        red
-      ></lib-simple-card>
-    </div>
-  </div>
+  <app-card-collection [dataSource$]="austriaDataSource$"></app-card-collection>
   <div class="row">
     <div class="col">
       <app-data-table [dataSource$]="stateDataSource$"></app-data-table>

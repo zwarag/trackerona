@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
-import { DataTableComponent } from './components/data-table.component';
 import { TableModule } from '@lib/elements/table';
 import { CardModule } from "@lib/elements/card";
+import { DataTableComponent } from "./components/data-table/data-table.component";
+import { CardCollectionComponent } from "./components/card-collection/card-collection.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   declarations: [
     DataTableComponent,
+    CardCollectionComponent
   ],
   imports: [
     TableModule,
-    CardModule
+    CardModule,
+    CommonModule
   ],
-  exports: [DataTableComponent, TableModule, CardModule]
+  exports: [DataTableComponent, CardCollectionComponent]
 })
 
 // @ts-ignore
