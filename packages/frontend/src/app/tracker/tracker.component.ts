@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Bezirk, GenericTable, Global } from '@lib/elements/table';
 import { map } from 'rxjs/operators';
 import { CountryData } from "../models/country-data";
+import { FederalStatesPieChart } from "../models/federal-states-pie-chart";
 
 export type Row = {
   bundesland: string,
@@ -30,6 +31,7 @@ export class TrackerComponent implements OnInit {
   stateDataSource$: Observable<GenericTable<Global, StateRow[]>>;
   districtDataSource$: Observable<GenericTable<Bezirk, DistrictRow[]>>;
   austriaDataSource$: Observable<CountryData>
+  stateBarChartData: FederalStatesPieChart
 
   constructor(
     private data: DataStateService,
@@ -51,17 +53,20 @@ export class TrackerComponent implements OnInit {
       map(e => {
           return {
             title: 'Bezirke im Überblick',
-            tableHeads: ['Bezirk', 'Zuwachs', 'Zuwachs in %'],
+            tableHeads: ['Bezirk', 'Zuwachs', 'Zuwachs in %', 'Fälle insgesamt', 'Fälle insgesamt pro 100k Einwohner'],
             tableRows: e.map(v => [
               v.name,
               (v.increase >= 0) ? '+' + v.increase : v.increase,
               (v.increase >= 0) ? '+' + v.increasePercent.toFixed(2) : v.increasePercent.toFixed(2),
+              v.infected,
+              v.infectedPerResident.toFixed()
             ]),
           } as unknown as GenericTable<Bezirk, DistrictRow[]>;
         },
       )
     );
     this.austriaDataSource$ = this.data.countryData$;
+    this.stateBarChartData = this.data.getFederalStatesForBarChart();
   }
 
 }

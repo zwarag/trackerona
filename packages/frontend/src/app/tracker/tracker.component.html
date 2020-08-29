@@ -5,6 +5,10 @@
     </header>
   </div>
   <app-card-collection [dataSource$]="austriaDataSource$"></app-card-collection>
+  <app-bar-chart
+    [chartLabels]="stateBarChartData?.labels"
+    [chartData]="stateBarChartData?.data"
+  ></app-bar-chart>
   <div class="row">
     <div class="col">
       <app-data-table [dataSource$]="stateDataSource$"></app-data-table>

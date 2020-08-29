@@ -1,5 +1,5 @@
 import { FederalData } from './federal-data';
-import { RestFederalState } from './rest-federal-state';
+import { RestFederalState } from "./rest-federal-state";
 
 export class FederalState extends FederalData {
 

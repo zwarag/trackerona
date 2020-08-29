@@ -1,4 +1,4 @@
-export abstract class FederalData {
+export class FederalData {
   objectId: number;
   infected: number;
   infectedPerResident: number;
@@ -7,7 +7,6 @@ export abstract class FederalData {
   increase: number;
   increasePercent: number;
   population: number;
-
 
   protected constructor(objectId: number,
                         infected: number,

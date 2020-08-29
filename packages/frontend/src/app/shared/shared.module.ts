@@ -28,7 +28,6 @@ import { PieChartComponent } from "./components/pie-chart/bar-chart.component";
   exports: [DataTableComponent, CardCollectionComponent, BarChartComponent, LineChartComponent, PieChartComponent]
 })
 
-// @ts-ignore
 export class SharedModule {
   constructor() {
   }
