@@ -7,6 +7,7 @@ import { Label } from 'ng2-charts'
   template: `
     <div style="display:block;">
       <ng-container *ngIf="chartData">
+        <ng-content select="h1,h2,h3,h4,h5,h6"></ng-content>
         <canvas baseChart
                 [datasets]="chartData"
                 [labels]="chartLabels"

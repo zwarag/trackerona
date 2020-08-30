@@ -8,7 +8,9 @@
   <app-bar-chart
     [chartLabels]="stateBarChartData?.labels"
     [chartData]="stateBarChartData?.data"
-  ></app-bar-chart>
+  >
+    <h2>Infizierte per Bundesländer</h2>
+  </app-bar-chart>
   <div class="row">
     <div class="col">
       <app-data-table [dataSource$]="stateDataSource$"></app-data-table>
