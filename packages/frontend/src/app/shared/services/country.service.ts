@@ -7,7 +7,6 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root',
 })
-// @ts-ignore
 export class CountryService {
 
   private dataSubject = new BehaviorSubject(new CountryData());

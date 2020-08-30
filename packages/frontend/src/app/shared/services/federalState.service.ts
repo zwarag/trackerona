@@ -9,7 +9,6 @@ import { FederalStatesPieChart } from "../../models/federal-states-pie-chart";
 @Injectable({
   providedIn: 'root',
 })
-// @ts-ignore
 export class FederalStateService {
 
   readonly NFederalStates: number = 9;

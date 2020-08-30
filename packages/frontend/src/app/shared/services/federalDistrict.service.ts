@@ -8,7 +8,6 @@ import { map } from "rxjs/operators";
 @Injectable({
   providedIn: 'root',
 })
-// @ts-ignore
 export class FederalDistrictService {
 
   readonly NFederalDistricts: number = 94;

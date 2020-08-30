@@ -15,7 +15,6 @@ import { GenericTable } from '@lib/elements/table';
   changeDetection: ChangeDetectionStrategy.Default
 })
 
-// @ts-ignore
 export class DataTableComponent implements OnInit {
   @Input() dataSource$: Observable<GenericTable<unknown, unknown>>;
   _title: string
