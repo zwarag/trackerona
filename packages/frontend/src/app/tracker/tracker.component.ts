@@ -47,8 +47,8 @@ export class TrackerComponent implements OnInit {
       map((e) => {
           return {
             title: 'Bundesländer im Überblick',
-            tableHeads: ['Bundesland', 'Infizierte', 'Infizierte pro 100k Einwohner', 'Genesene', 'Verstorbene'],
-            tableRows: e.map(v => [v.federalState, v.infected, v.infectedPerResident.toFixed(), v.recovered, v.deaths]),
+            tableHeads: ['Bundesland', 'Infizierte', 'Infizierte pro 100k Einwohner', 'Fälle', 'Fälle pro 100k Einwohner', 'Genesene', 'Verstorbene'],
+            tableRows: e.map(v => [v.federalState, v.positive, v.positivePerResident.toFixed(), v.infected, v.infectedPerResident.toFixed(), v.recovered, v.deaths]),
           } as unknown as GenericTable<Global, StateRow[]>;
         },
       ),
@@ -70,7 +70,7 @@ export class TrackerComponent implements OnInit {
       )
     );
     this.austriaDataSource$ = this.countryService.data$
-    this.stateBarChartData = this.federalStatesService.getFederalStatesForBarChart();
+    this.stateBarChartData = this.federalStatesService.getInfectedForBarChart();
   }
 
 }

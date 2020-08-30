@@ -38,12 +38,19 @@ export class FederalStateService {
     });
   }
 
-  public getFederalStatesForBarChart(): FederalStatesPieChart {
-    let d: FederalStatesPieChart = { labels: [], data: [{ data: [], label: 'Infizierte Pro Bundesland' }] };
+  public getInfectedForBarChart(): FederalStatesPieChart {
+    let d: FederalStatesPieChart = {
+      labels: [],
+      data: [{ data: [], label: 'Total' }, {
+        data: [],
+        label: 'Gewichtet nach Einwohner'
+      }]
+    };
     this.latest$.subscribe((states) => {
       for (let state of states) {
         d.labels.push(state.federalState);
         d.data[0].data.push(state.infected);
+        d.data[1].data.push(state.infectedPerResident);
       }
     });
     return d;
