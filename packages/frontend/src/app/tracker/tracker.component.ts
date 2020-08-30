@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DataStateService } from '../shared/services/data-state.service';
 import { Observable } from 'rxjs';
 import { Bezirk, GenericTable, Global } from '@lib/elements/table';
 import { map } from 'rxjs/operators';
 import { CountryData } from "../models/country-data";
 import { FederalStatesPieChart } from "../models/federal-states-pie-chart";
+import { FederalStateService } from "../shared/services/federalState.service";
+import { FederalDistrictService } from "../shared/services/federalDistrict.service";
+import { CountryService } from "../shared/services/country.service";
 
 export type Row = {
   bundesland: string,
@@ -34,12 +36,14 @@ export class TrackerComponent implements OnInit {
   stateBarChartData: FederalStatesPieChart
 
   constructor(
-    private data: DataStateService,
+    private federalStatesService: FederalStateService,
+    private federalDistrictsService: FederalDistrictService,
+    private countryService: CountryService
   ) {
   }
 
   ngOnInit() {
-    this.stateDataSource$ = this.data.federalStates$.pipe(
+    this.stateDataSource$ = this.federalStatesService.latest$.pipe(
       map((e) => {
           return {
             title: 'Bundesländer im Überblick',
@@ -49,7 +53,7 @@ export class TrackerComponent implements OnInit {
         },
       ),
     );
-    this.districtDataSource$ = this.data.federalDistricts$.pipe(
+    this.districtDataSource$ = this.federalDistrictsService.latest$.pipe(
       map(e => {
           return {
             title: 'Bezirke im Überblick',
@@ -65,8 +69,8 @@ export class TrackerComponent implements OnInit {
         },
       )
     );
-    this.austriaDataSource$ = this.data.countryData$;
-    this.stateBarChartData = this.data.getFederalStatesForBarChart();
+    this.austriaDataSource$ = this.countryService.data$
+    this.stateBarChartData = this.federalStatesService.getFederalStatesForBarChart();
   }
 
 }
